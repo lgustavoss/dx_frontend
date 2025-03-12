@@ -1,0 +1,36 @@
+.global-alerts {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999; /* Garante que fique acima de tudo */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .alert {
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 250px;
+    color: white;
+    animation: fadeIn 0.3s, fadeOut 0.5s 14.5s forwards; /* Começa a desaparecer após 14.5s */
+  }
+  
+  .alert.error {
+    background-color: var(--alert-error-color);
+  }
+  
+  .alert.success {
+    background-color: var(--alert-success-color);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }

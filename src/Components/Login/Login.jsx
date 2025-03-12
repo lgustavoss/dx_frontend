@@ -1,12 +1,14 @@
 import { FaUser, FaLock } from 'react-icons/fa';
 import { useState } from 'react';
 import { api, addActivityListeners } from '../../axiosConfig';
+import { useAlert } from '../Alert/AlertContext';
 import './Login.css';
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const { addAlert } = useAlert();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -29,7 +31,13 @@ const Login = () => {
             });
             localStorage.setItem('user', JSON.stringify(userResponse.data));
 
-            window.location = '/usuarios';
+            // Adiciona a mensagem de sucesso
+            addAlert('Login realizado com sucesso!', 'success');
+
+            // Pequeno delay para o usuário ver a mensagem antes do redirecionamento
+            setTimeout(() => {
+                window.location = '/usuarios';
+            }, 1000);
         } catch (err) {
             setError('Usuario ou senha inválidos');
             setTimeout(() => {

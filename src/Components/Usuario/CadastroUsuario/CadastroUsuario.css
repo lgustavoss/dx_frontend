@@ -1,16 +1,6 @@
 .container-cadastro {
-    width: var(--container-width);
-    max-width: var(--container-max-width);
-    margin: 80px auto 0 auto;
-    background-color: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    padding: var(--container-padding);
-    border-radius: 10px;
-    text-align: center;
-    color: #fff;
-    transition: margin-left 0.3s ease;
-    position: relative;
+    /* Herda estilos de .container-base definido em App.css */
+    text-align: center; /* Propriedade específica deste container */
 }
 
 .container-cadastro h1 {
@@ -103,10 +93,10 @@ input:checked + .slider:before {
 }
 
 .button-cadastrar {
-    width: 200px; /* Define a largura do botão */
+    width: 200px;
     height: 60px;
-    background-color:  var(--secondary-color);
-    border: none;
+    background-color: var(--button-background-color);
+    border: var(--button-border-color);
     outline: none;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -114,14 +104,38 @@ input:checked + .slider:before {
     font-size: 16px;
     font-weight: 600;
     text-shadow: none;
-    color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
-    position: absolute; /* Adiciona posição absoluta para o botão */
-    bottom: 10px; /* Ajusta a posição inferior */
-    right: 40px; /* Ajusta a posição à direita */
+    color: var(--button-text-color);
+    transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 10px;
+    right: 40px;
 }
 
 .button-cadastrar:hover {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+    background-color: var(--button-hover-background-color);
+}
+
+
+.alert {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadeOut 5s forwards;
+    color: white;
+}
+
+.alert.error {
+    background-color: var(--alert-error-color);
+  }
+  
+  .alert.success {
+    background-color: var(--alert-success-color);
+  }
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }

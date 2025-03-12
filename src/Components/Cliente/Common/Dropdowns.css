@@ -1,0 +1,90 @@
+/* Estilos para campos de dropdown */
+.dropdown-field {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.dropdown-field label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+}
+
+.dropdown-input-container {
+    position: relative;
+    display: flex;
+}
+
+.dropdown-input {
+    flex: 1;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+}
+
+.dropdown-input:disabled {
+    background-color: rgba(128, 128, 128, 0.2);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+}
+
+.dropdown-toggle {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.dropdown-toggle:disabled {
+    color: rgba(255, 255, 255, 0.4);
+    cursor: not-allowed;
+}
+
+.dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0 0 5px 5px;
+    z-index: 100;
+}
+
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsividade para os dropdowns */
+@media (max-width: 768px) {
+    .location-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .uf-dropdown {
+        order: 1;
+    }
+    
+    .cidade-dropdown {
+        order: 2;
+    }
+}

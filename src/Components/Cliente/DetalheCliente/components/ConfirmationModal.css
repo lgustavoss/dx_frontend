@@ -1,0 +1,101 @@
+/* Overlay para escurecer o fundo quando o modal estiver aberto */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+/* Container do modal */
+.modal-container {
+  /* Fundo menos transparente para melhor legibilidade */
+  background-color: rgba(44, 48, 52, 0.95);
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  padding: 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  animation: modalFadeIn 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Cabeçalho do modal */
+.modal-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h3 {
+  margin: 0;
+  /* Alterando de var(--primary-color) para branco */
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+/* Corpo do modal */
+.modal-body {
+  padding: 20px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Rodapé do modal */
+.modal-footer {
+  padding: 15px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Botões do modal - seguindo o padrão visual do sistema */
+.modal-btn {
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: var(--button-border-color);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.modal-btn-cancel {
+  background-color: var(--button-background-color);
+}
+
+.modal-btn-confirm {
+  background-color: var(--button-background-color);
+}
+
+.modal-btn-cancel:hover {
+  background-color: rgba(255, 0, 0, 0.3); /* Tom avermelhado para cancelar, como usado em outros botões */
+}
+
+.modal-btn-confirm:hover {
+  background-color: rgba(0, 128, 0, 0.3); /* Tom esverdeado para confirmar, como usado em outros botões */
+}
