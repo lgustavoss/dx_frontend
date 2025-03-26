@@ -1,17 +1,17 @@
 import './App.css'
-import Login from './Components/Login/Login'
-import ListarUsuario from './Components/Usuario/ListarUsuario/ListarUsuario'
-import Perfil from './Components/Perfil/Perfil'
-import CadastroUsuario from './Components/Usuario/CadastroUsuario/CadastroUsuario'
-import ListarCliente from './Components/Cliente/ListarCliente/ListarCliente'
-import CadastroCliente from './Components/Cliente/CadastroCliente/CadastroCliente'
-import DetalheCliente from './Components/Cliente/DetalheCliente/DetalheCliente';
-import Navbar from './Components/Navbar/Navbar'
-import Sidebar from './Components/Sidebar/Sidebar'
+import Login from './Components/features/Auth/Login/Login'
+import ListarUsuario from './Components/features/Usuario/ListarUsuario/ListarUsuario'
+import Perfil from './Components/features/Perfil/Perfil'
+import CadastroUsuario from './Components/features/Usuario/CadastroUsuario/CadastroUsuario'
+import ListarCliente from './Components/features/Cliente/ListarCliente/ListarCliente'
+import CadastroCliente from './Components/features/Cliente/CadastroCliente/CadastroCliente'
+import DetalheCliente from './Components/features/Cliente/DetalheCliente/DetalheCliente';
+import { Navbar } from './Components/ui/Navigation';
+import { Sidebar } from './Components/ui/Navigation';
+import { SidebarProvider, SidebarContext } from './Components/ui/Navigation/Sidebar/SidebarContext';
+import { AlertProvider } from './Components/ui/Feedback/Alert/AlertContext';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
-import { useEffect, useRef, useContext } from 'react';
-import { SidebarProvider, SidebarContext } from './Components/Sidebar/SidebarContext';
-import { AlertProvider } from './Components/Alert/AlertContext'; 
+ 
 
 
 function App() {

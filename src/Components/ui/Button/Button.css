@@ -1,0 +1,137 @@
+/* Estilos base para todos os botões */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    outline: none;
+    gap: 8px;
+  }
+  
+  .button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* Variantes de botão */
+  .button--default {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+  }
+  
+  .button--default:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .button--primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+  }
+  
+  .button--primary:hover:not(:disabled) {
+    background-color: rgba(3, 61, 124, 0.8);
+    box-shadow: 0 0 8px rgba(3, 61, 124, 0.5);
+  }
+  
+  .button--secondary {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+  }
+  
+  .button--secondary:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .button--danger {
+    background-color: var(--alert-error-color);
+    color: white;
+    border: none;
+  }
+  
+  .button--danger:hover:not(:disabled) {
+    background-color: rgba(255, 51, 51, 0.8);
+    box-shadow: 0 0 8px rgba(255, 51, 51, 0.5);
+  }
+  
+  .button--success {
+    background-color: var(--alert-success-color);
+    color: white;
+    border: none;
+  }
+  
+  .button--success:hover:not(:disabled) {
+    background-color: rgba(76, 175, 80, 0.8);
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+  }
+  
+  /* Tamanhos de botão */
+  .button--small {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+  
+  .button--medium {
+    padding: 10px 16px;
+    font-size: 16px;
+  }
+  
+  .button--large {
+    padding: 12px 20px;
+    font-size: 18px;
+  }
+  
+  /* Botão de largura total */
+  .button--full-width {
+    width: 100%;
+  }
+  
+  /* Estilos específicos para botões com ícones */
+  .icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 0;
+    border-radius: 5px;
+  }
+  
+  .icon-button.button--small {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 0;
+  }
+  
+  .icon-button.button--large {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 0;
+  }
+  
+  /* Estilos de foco para acessibilidade */
+  .button:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .button--medium {
+      padding: 8px 14px;
+      font-size: 14px;
+    }
+    
+    .button--large {
+      padding: 10px 16px;
+      font-size: 16px;
+    }
+  }

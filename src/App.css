@@ -3,30 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Helvetica, sans-serif;
-}
-
-/* Variáveis globais */
-:root {
-  /* Cores Principais*/
-  --primary-color: #033D7C;
-  --secondary-color: #fff;
-  --text-color: #000;
-
-  /* Cores de botões */
-  --button-background-color: transparent;
-  --button-text-color: #fff;
-  --button-border-color: 1px solid #fff;
-  --button-hover-background-color: rgba(255, 255, 255, 0.1);
-
-  /* Cores para alertas*/
-  --alert-error-color: #ff3333;
-  --alert-success-color: #4CAF50;
-
-  /* Container */
-  --container-width: 95%;
-  --container-max-width: 1200px;
-  --container-padding: 40px;
+  font-family: var(--font-family-base);
 }
 
 /* Estilos globais da aplicação */
@@ -55,30 +32,31 @@
   background-color: var(--button-background-color);
   border: var(--button-border-color);
   outline: none;
-  border-radius: 40px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: var(--border-radius-pill);
+  box-shadow: var(--shadow-button);
   cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: var(--font-button);
+  font-weight: var(--font-weight-button);
   color: var(--button-text-color);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .button:hover {
   background-color: var(--button-hover-background-color);
+  box-shadow: var(--shadow-button-hover);
 }
 
 /* Container base - classe comum para todos os containers da aplicação */
 .container-base {
-  width: var(--container-width);
-  max-width: var(--container-max-width);
+  width: var(--container-width, 95%);
+  max-width: var(--container-max-width, 1200px);
   margin: 80px auto 0 auto;
-  padding: var(--container-padding);
-  background-color: rgba(255, 255, 255, 0.15);
+  padding: var(--spacing-container-padding);
+  background-color: var(--color-white-alpha-15);
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  color: #fff;
+  border: var(--border-thick-solid) var(--border-color-light);
+  border-radius: var(--border-radius-container);
+  color: var(--color-white);
   position: relative;
   transition: margin-left 0.3s ease;
 }
@@ -86,15 +64,14 @@
 /* Estilo para o título principal dentro dos containers */
 .container-base h1 {
   text-align: center;
-  font-size: 30px;
-  margin-bottom: 30px;
+  font-size: var(--font-page-title);
+  margin-bottom: var(--spacing-xl);
 }
 
 /* Media queries globais */
 @media (max-width: 900px) {
   :root {
-      --container-width: 98%;
-      --container-max-width: 90%;
-      --container-padding: 20px;
+    --container-width: 98%;
+    --container-max-width: 90%;
   }
 }

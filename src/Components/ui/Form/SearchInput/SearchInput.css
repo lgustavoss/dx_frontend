@@ -1,0 +1,147 @@
+/* Estilos para o componente SearchInput */
+.search-input-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .search-icon {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .search-text-input {
+    padding-right: 100px; /* Espaço para os botões */
+  }
+  
+  .clear-search-button {
+    position: absolute;
+    right: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s;
+    z-index: 10;
+  }
+  
+  .history-toggle-button {
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s;
+    z-index: 10;
+  }
+  
+  .clear-search-button:hover,
+  .history-toggle-button:hover {
+    color: white;
+  }
+  
+  /* Estilos para o histórico de buscas */
+  .search-history-container {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+    background-color: rgba(30, 30, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 50;
+    max-height: 300px;
+    overflow-y: auto;
+    animation: fadeIn 0.2s ease-out;
+  }
+  
+  .search-history-header {
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .search-history-list {
+    padding: 5px 0;
+  }
+  
+  .search-history-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    outline: none;
+  }
+  
+  .search-history-item:hover,
+  .search-history-item:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .history-item-icon {
+    color: rgba(255, 255, 255, 0.5);
+    margin-right: 10px;
+    font-size: 12px;
+  }
+  
+  .history-item-text {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .remove-history-item {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 10px;
+    transition: color 0.2s;
+    visibility: hidden;
+  }
+  
+  .search-history-item:hover .remove-history-item,
+  .search-history-item:focus .remove-history-item {
+    visibility: visible;
+  }
+  
+  .remove-history-item:hover {
+    color: rgba(255, 77, 77, 0.8);
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Ajustes para telas menores */
+  @media (max-width: 768px) {
+    .search-history-container {
+      max-height: 200px;
+    }
+    
+    .search-history-item {
+      padding: 10px;
+    }
+  }

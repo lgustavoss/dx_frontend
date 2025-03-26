@@ -1,75 +1,129 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
-import { api } from '../axiosConfig';
 import { useAlert } from '../Components/Alert/AlertContext';
 
 /**
- * Hook para gerenciar campos editáveis
- * @param {string} entityId - ID da entidade sendo editada (ex: ID do cliente)
- * @param {string} entityType - Tipo da entidade (ex: "cliente" para usar na URL da API)
- * @param {Function} updateCallback - Função para atualizar o estado local após edição bem-sucedida
- * @returns {Object} Funções e estados para gerenciar campos editáveis
+ * Hook aprimorado para gerenciar campos editáveis
+ * 
+ * @param {Object} options - Opções de configuração
+ * @param {string} options.apiEndpoint - Endpoint base da API (ex: '/usuario/users/')
+ * @param {string} options.entityId - ID da entidade sendo editada
+ * @param {Function} options.onSuccessUpdate - Callback executado após atualização bem-sucedida
+ * @param {Function} options.onErrorUpdate - Callback executado após erro na atualização
+ * @param {Function} options.transformData - Função para transformar os dados antes de enviar à API
+ * @param {Object} options.api - Instância axios customizada (opcional)
+ * @returns {Object} - Funções e estados para gerenciar campos editáveis
  */
-export function useEditableField(entityId, entityType, updateCallback) {
+export function useEditableField({
+  apiEndpoint,
+  entityId,
+  onSuccessUpdate,
+  onErrorUpdate,
+  transformData,
+  api
+}) {
+  // Estado para controlar qual campo está sendo editado
   const [editingField, setEditingField] = useState(null);
-  const [editValue, setEditValue] = useState('');
+  
+  // Ref para o elemento que está sendo editado
   const editRef = useRef(null);
+  
+  // Acesso ao sistema de alertas
   const { addAlert } = useAlert();
   
-  // Função para iniciar edição de um campo
-  const startEdit = useCallback((field, value) => {
+  // Instância da API a ser usada
+  const apiInstance = api || (typeof window !== 'undefined' ? window.api : null);
+
+  /**
+   * Inicia o modo de edição para um campo
+   * @param {string} fieldName - Nome do campo a ser editado
+   * @param {*} fieldValue - Valor atual do campo
+   */
+  const startEdit = useCallback((fieldName) => {
+    // Verifica se o campo pode ser editado
     const nonEditableFields = ['id', 'data_criacao', 'data_atualizacao', 'criado_por', 'atualizado_por'];
-    if (nonEditableFields.includes(field)) {
+    if (nonEditableFields.includes(fieldName)) {
       return;
     }
-    
-    setEditingField(field);
-    setEditValue(value || '');
+    setEditingField(fieldName);
   }, []);
 
-  // Função para cancelar a edição
+  /**
+   * Cancela a edição do campo atual
+   */
   const cancelEdit = useCallback(() => {
     setEditingField(null);
-    setEditValue('');
   }, []);
 
-  // Função para salvar a edição
-  const saveEdit = useCallback(async () => {
-    if (!editingField || !entityId) {
+  /**
+   * Salva as alterações do campo atual
+   * @param {string} fieldName - Nome do campo
+   * @param {*} fieldValue - Novo valor do campo
+   */
+  const saveEdit = useCallback(async (fieldName, fieldValue) => {
+    if (!fieldName || !entityId || !apiEndpoint || !apiInstance) {
       setEditingField(null);
       return;
     }
-    
-    // Verificar se o valor realmente foi alterado
-    if (editValue === '') {
-      setEditingField(null);
-      return;
-    }
-    
+
     try {
-      const payload = { [editingField]: editValue };
+      // Prepara os dados para envio
+      let payload = { [fieldName]: fieldValue };
       
-      // Fazer requisição à API
-      const response = await api.patch(`/${entityType}/${entityId}/`, payload);
+      // Aplica transformação nos dados, se fornecida
+      if (transformData) {
+        payload = transformData(fieldName, fieldValue, payload);
+      }
+
+      // Envia requisição para a API
+      const response = await apiInstance.patch(`${apiEndpoint}${entityId}/`, payload);
       
+      // Processa resposta bem-sucedida
       if (response.status >= 200 && response.status < 300) {
-        // Atualizar o estado local através do callback
-        if (updateCallback) {
-          updateCallback(payload);
+        // Executa callback de sucesso
+        if (onSuccessUpdate) {
+          onSuccessUpdate(fieldName, fieldValue, response.data);
         }
         
-        addAlert(`Campo ${editingField} atualizado com sucesso!`, 'success');
+        // Exibe alerta de sucesso
+        addAlert(`Campo ${fieldName} atualizado com sucesso!`, 'success');
       } else {
         throw new Error(`Erro ao atualizar: ${response.statusText}`);
       }
     } catch (err) {
-      console.error(`Erro ao atualizar ${entityType}:`, err);
-      addAlert(`Erro ao atualizar ${entityType}. Tente novamente.`, 'error');
+      console.error(`Erro ao atualizar ${fieldName}:`, err);
+      
+      // Exibe alerta de erro
+      addAlert(`Erro ao atualizar campo. ${err.message || 'Tente novamente.'}`, 'error');
+      
+      // Executa callback de erro
+      if (onErrorUpdate) {
+        onErrorUpdate(fieldName, fieldValue, err);
+      }
     } finally {
+      // Limpa o campo em edição
       setEditingField(null);
     }
-  }, [entityId, entityType, editingField, editValue, updateCallback, addAlert]);
-  
-  // Detectar tecla ESC para cancelar edição
+  }, [entityId, apiEndpoint, apiInstance, addAlert, onSuccessUpdate, onErrorUpdate, transformData]);
+
+  /**
+   * Detecta clique fora do componente para cancelar edição
+   */
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (editRef.current && !editRef.current.contains(event.target) && editingField) {
+        cancelEdit();
+      }
+    };
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [editingField, cancelEdit]);
+
+  /**
+   * Detecta tecla ESC para cancelar edição
+   */
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'Escape' && editingField) {
@@ -77,22 +131,17 @@ export function useEditableField(entityId, entityType, updateCallback) {
       }
     };
     
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, [editingField, cancelEdit]);
-  
+
   return {
     editingField,
-    setEditingField,
-    editValue,
-    setEditValue,
     startEdit,
     cancelEdit,
     saveEdit,
     editRef
   };
 }
-
-export default useEditableField;

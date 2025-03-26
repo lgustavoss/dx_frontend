@@ -1,0 +1,144 @@
+.container-cadastro {
+    /* Herda estilos de .container-base definido em App.css */
+    text-align: center; /* Propriedade específica deste container */
+}
+
+.container-cadastro h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+/* Manter apenas os estilos específicos que não são cobertos pelos componentes */
+
+.input-group {
+    margin-bottom: var(--spacing-sm);
+    text-align: right;
+    display: flex;
+    align-items: center;
+    width: auto;
+}
+
+.input-group label {
+    width: 100px;
+    flex: 0 0 100px;
+    text-align: right;
+    margin-right: var(--spacing-xs);
+    color: var(--color-white);
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="password"] {
+    flex: 1;
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid var(--color-white-alpha-20);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--color-white-alpha-10);
+    color: var(--color-white);
+}
+
+.switch-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.switch-group label {
+    margin-right: var(--spacing-xs);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    margin-left: var(--spacing-xs);
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 20px;
+    width: 40px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--color-primary-500);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.button-cadastrar {
+    width: 200px;
+    height: 60px;
+    background-color: var(--button-background-color);
+    border: var(--button-border-color);
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    text-shadow: none;
+    color: var(--button-text-color);
+    transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 10px;
+    right: 40px;
+}
+
+.button-cadastrar:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+
+.alert {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadeOut 5s forwards;
+    color: white;
+}
+
+.alert.error {
+    background-color: var(--alert-error-color);
+  }
+  
+  .alert.success {
+    background-color: var(--alert-success-color);
+  }
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}

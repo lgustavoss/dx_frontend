@@ -1,0 +1,74 @@
+/* Estilos para o componente ActionButtons */
+.action-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Variações de alinhamento */
+  .action-buttons--left {
+    justify-content: flex-start;
+  }
+  
+  .action-buttons--right {
+    justify-content: flex-end;
+  }
+  
+  .action-buttons--center {
+    justify-content: center;
+  }
+  
+  /* Variações de espaçamento */
+  .action-buttons--gap-small {
+    gap: 4px;
+  }
+  
+  .action-buttons--gap-default {
+    gap: 8px;
+  }
+  
+  .action-buttons--gap-large {
+    gap: 12px;
+  }
+  
+  /* Animação para botão de busca quando está em carregamento */
+  .action-search-button.searching {
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 0.7;
+    }
+  }
+  
+  /* Estado de hover específico para cada botão */
+  .action-edit-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .action-save-button:hover {
+    background-color: rgba(76, 175, 80, 0.3);
+  }
+  
+  .action-cancel-button:hover,
+  .action-delete-button:hover {
+    background-color: rgba(255, 51, 51, 0.3);
+  }
+  
+  .action-search-button:hover {
+    background-color: rgba(76, 175, 80, 0.3);
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .action-buttons {
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+  }

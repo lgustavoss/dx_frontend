@@ -1,0 +1,74 @@
+/* Estilos para o componente Section */
+.ui-section {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Última seção sem borda inferior */
+  .ui-section:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+  
+  /* Opção para forçar remoção da borda */
+  .ui-section--no-border {
+    border-bottom: none !important;
+  }
+  
+  /* Opção para largura total */
+  .ui-section--full-width {
+    width: 100%;
+  }
+  
+  /* Cabeçalho da seção */
+  .ui-section__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Título da seção */
+  .ui-section__title {
+    font-size: 22px;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Título com borda esquerda */
+  .ui-section__title--left-bordered {
+    padding-left: 10px;
+    border-left: 4px solid var(--primary-color);
+  }
+  
+  /* Ações do cabeçalho */
+  .ui-section__header-action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .ui-section {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+    }
+    
+    .ui-section__title {
+      font-size: 18px;
+    }
+    
+    .ui-section__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .ui-section__header-action {
+      margin-top: 10px;
+      width: 100%;
+      justify-content: flex-end;
+    }
+  }

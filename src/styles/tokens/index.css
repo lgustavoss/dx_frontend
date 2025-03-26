@@ -1,0 +1,12 @@
+/* Importação de todos os tokens de design */
+
+@import './colors.css';
+@import './spacing.css';
+@import './typography.css';
+@import './shadows.css';
+@import './borders.css';
+
+/* 
+  Este arquivo serve como um único ponto de importação para todos os tokens de design.
+  Importe este arquivo em seu index.css principal para ter acesso a todos os tokens.
+*/

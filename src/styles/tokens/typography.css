@@ -1,0 +1,75 @@
+/* Tokens de Tipografia */
+
+:root {
+    /* Famílias de fontes */
+    --font-family-base: Helvetica, Arial, sans-serif;
+    --font-family-headings: var(--font-family-base);
+    --font-family-monospace: 'Courier New', monospace;
+    
+    /* Tamanhos de fonte */
+    --font-size-2xs: 10px;
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-md: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --font-size-2xl: 22px;
+    --font-size-3xl: 24px;
+    --font-size-4xl: 30px;
+    --font-size-5xl: 36px;
+    --font-size-6xl: 48px;
+    
+    /* Pesos de fonte */
+    --font-weight-thin: 100;
+    --font-weight-extra-light: 200;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semi-bold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extra-bold: 800;
+    --font-weight-black: 900;
+    
+    /* Altura de linha */
+    --line-height-none: 1;
+    --line-height-tight: 1.2;
+    --line-height-snug: 1.4;
+    --line-height-normal: 1.6;
+    --line-height-relaxed: 1.8;
+    --line-height-loose: 2;
+    
+    /* Espaçamento entre letras */
+    --letter-spacing-tighter: -0.05em;
+    --letter-spacing-tight: -0.025em;
+    --letter-spacing-normal: 0;
+    --letter-spacing-wide: 0.025em;
+    --letter-spacing-wider: 0.05em;
+    --letter-spacing-widest: 0.1em;
+    
+    /* Tokens específicos para elementos */
+    --font-page-title: var(--font-size-4xl);
+    --font-section-title: var(--font-size-2xl);
+    --font-card-title: var(--font-size-xl);
+    --font-button: var(--font-size-md);
+    --font-input: var(--font-size-md);
+    --font-label: var(--font-size-sm);
+    --font-body: var(--font-size-md);
+    --font-small: var(--font-size-sm);
+    --font-table-header: var(--font-size-sm);
+    --font-table-cell: var(--font-size-md);
+    
+    /* Variações de peso */
+    --font-weight-heading: var(--font-weight-bold);
+    --font-weight-subheading: var(--font-weight-semi-bold);
+    --font-weight-button: var(--font-weight-medium);
+    --font-weight-label: var(--font-weight-medium);
+  }
+  
+  /* Media queries para tipografia responsiva */
+  @media (max-width: 768px) {
+    :root {
+      --font-page-title: var(--font-size-3xl); /* 24px */
+      --font-section-title: var(--font-size-xl); /* 20px */
+      --font-card-title: var(--font-size-lg); /* 18px */
+    }
+  }

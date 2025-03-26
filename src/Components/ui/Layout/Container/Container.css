@@ -1,0 +1,73 @@
+/* Estilos para o componente Container */
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  
+  /* Variações de largura máxima */
+  .container--max-width-small {
+    max-width: 640px;
+  }
+  
+  .container--max-width-default {
+    max-width: 1200px;
+  }
+  
+  .container--max-width-medium {
+    max-width: 1024px;
+  }
+  
+  .container--max-width-large {
+    max-width: 1400px;
+  }
+  
+  .container--max-width-xlarge {
+    max-width: 1600px;
+  }
+  
+  /* Container fluido (sem largura máxima) */
+  .container--fluid {
+    max-width: none;
+  }
+  
+  /* Container centralizado */
+  .container--centered {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Variações de padding */
+  .container--padding-none {
+    padding: 0;
+  }
+  
+  .container--padding-small {
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+  }
+  
+  .container--padding-medium {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+  
+  .container--padding-large {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+  
+  /* Container com altura total */
+  .container--full-height {
+    height: 100%;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .container--padding-medium,
+    .container--padding-large {
+      padding-left: var(--spacing-sm);
+      padding-right: var(--spacing-sm);
+    }
+  }

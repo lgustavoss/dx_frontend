@@ -1,0 +1,174 @@
+/* Estilos para o componente Divider */
+.divider {
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  /* Orientação */
+  .divider--horizontal {
+    width: 100%;
+    height: 0;
+    margin-bottom: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-style: solid;
+  }
+  
+  .divider--vertical {
+    display: inline-block;
+    height: 100%;
+    width: 0;
+    margin-left: var(--spacing-md);
+    margin-right: var(--spacing-md);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-left-style: solid;
+  }
+  
+  /* Variantes */
+  .divider--variant-default.divider--horizontal {
+    border-top-style: solid;
+  }
+  
+  .divider--variant-default.divider--vertical {
+    border-left-style: solid;
+  }
+  
+  .divider--variant-dashed.divider--horizontal {
+    border-top-style: dashed;
+  }
+  
+  .divider--variant-dashed.divider--vertical {
+    border-left-style: dashed;
+  }
+  
+  .divider--variant-dotted.divider--horizontal {
+    border-top-style: dotted;
+  }
+  
+  .divider--variant-dotted.divider--vertical {
+    border-left-style: dotted;
+  }
+  
+  /* Espessura */
+  .divider--thickness-thin.divider--horizontal {
+    border-top-width: 1px;
+  }
+  
+  .divider--thickness-thin.divider--vertical {
+    border-left-width: 1px;
+  }
+  
+  .divider--thickness-medium.divider--horizontal {
+    border-top-width: 2px;
+  }
+  
+  .divider--thickness-medium.divider--vertical {
+    border-left-width: 2px;
+  }
+  
+  .divider--thickness-thick.divider--horizontal {
+    border-top-width: 4px;
+  }
+  
+  .divider--thickness-thick.divider--vertical {
+    border-left-width: 4px;
+  }
+  
+  /* Cores */
+  .divider--color-default {
+    border-color: var(--color-white-alpha-20);
+  }
+  
+  .divider--color-light {
+    border-color: var(--color-white-alpha-10);
+  }
+  
+  .divider--color-primary {
+    border-color: var(--color-primary-600);
+  }
+  
+  .divider--color-secondary {
+    border-color: var(--color-white-alpha-40);
+  }
+  
+  /* Margens */
+  .divider--margin-none.divider--horizontal {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  .divider--margin-none.divider--vertical {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .divider--margin-small.divider--horizontal {
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .divider--margin-small.divider--vertical {
+    margin-left: var(--spacing-xs);
+    margin-right: var(--spacing-xs);
+  }
+  
+  .divider--margin-default.divider--horizontal {
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .divider--margin-default.divider--vertical {
+    margin-left: var(--spacing-md);
+    margin-right: var(--spacing-md);
+  }
+  
+  .divider--margin-large.divider--horizontal {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .divider--margin-large.divider--vertical {
+    margin-left: var(--spacing-lg);
+    margin-right: var(--spacing-lg);
+  }
+  
+  /* Divider com texto */
+  .divider--with-text {
+    display: flex;
+    align-items: center;
+    height: auto;
+    padding: var(--spacing-xs) 0;
+    margin: var(--spacing-md) 0;
+    border-width: 0;
+  }
+  
+  .divider--with-text::before,
+  .divider--with-text::after {
+    content: '';
+    flex: 1;
+    border-top: 1px solid var(--color-white-alpha-20);
+  }
+  
+  .divider__text {
+    padding: 0 var(--spacing-sm);
+    white-space: nowrap;
+    color: var(--color-white-alpha-80);
+    font-size: var(--font-size-sm);
+  }
+  
+  /* Posição do texto */
+  .divider--text-position-left::before {
+    width: var(--spacing-lg);
+    flex-grow: 0;
+  }
+  
+  .divider--text-position-right::after {
+    width: var(--spacing-lg);
+    flex-grow: 0;
+  }

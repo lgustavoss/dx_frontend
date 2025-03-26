@@ -1,0 +1,86 @@
+/* Estilos para a coluna de ações */
+.action-column {
+    padding: 6px !important;
+  }
+  
+  .action-column__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Variações de espaçamento entre botões */
+  .action-column__gap-small {
+    gap: 4px;
+  }
+  
+  .action-column__gap-medium {
+    gap: 8px;
+  }
+  
+  .action-column__gap-large {
+    gap: 12px;
+  }
+  
+  /* Estilização dos botões */
+  .action-column__button {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-size: 14px;
+  }
+  
+  /* Variantes específicas por tipo de ação */
+  .action-column__button--view:hover {
+    color: #fff;
+    background-color: rgba(76, 175, 80, 0.3);
+  }
+  
+  .action-column__button--edit:hover {
+    color: #fff;
+    background-color: rgba(33, 150, 243, 0.3);
+  }
+  
+  .action-column__button--delete:hover {
+    color: #fff;
+    background-color: rgba(244, 67, 54, 0.3);
+  }
+  
+  .action-column__button--activate:hover {
+    color: #fff;
+    background-color: rgba(76, 175, 80, 0.3);
+  }
+  
+  .action-column__button--deactivate:hover {
+    color: #fff;
+    background-color: rgba(244, 67, 54, 0.3);
+  }
+  
+  .action-column__button--lock:hover,
+  .action-column__button--unlock:hover {
+    color: #fff;
+    background-color: rgba(255, 152, 0, 0.3);
+  }
+  
+  .action-column__button--download:hover {
+    color: #fff;
+    background-color: rgba(33, 150, 243, 0.3);
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .action-column__container {
+      justify-content: flex-start;
+    }
+    
+    .action-column__button {
+      width: 36px;
+      height: 36px;
+      font-size: 16px;
+    }
+  }

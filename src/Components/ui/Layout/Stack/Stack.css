@@ -1,0 +1,198 @@
+/* Estilos para o componente Stack */
+.stack {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  
+  /* Direções */
+  .stack--direction-row {
+    flex-direction: row;
+  }
+  
+  .stack--direction-column {
+    flex-direction: column;
+  }
+  
+  .stack--direction-row-reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .stack--direction-column-reverse {
+    flex-direction: column-reverse;
+  }
+  
+  /* Espaçamentos para direção row */
+  .stack--direction-row.stack--spacing-none > *:not(:last-child) {
+    margin-right: 0;
+  }
+  
+  .stack--direction-row.stack--spacing-xs > *:not(:last-child) {
+    margin-right: var(--spacing-xs);
+  }
+  
+  .stack--direction-row.stack--spacing-sm > *:not(:last-child) {
+    margin-right: var(--spacing-sm);
+  }
+  
+  .stack--direction-row.stack--spacing-medium > *:not(:last-child) {
+    margin-right: var(--spacing-md);
+  }
+  
+  .stack--direction-row.stack--spacing-lg > *:not(:last-child) {
+    margin-right: var(--spacing-lg);
+  }
+  
+  .stack--direction-row.stack--spacing-xl > *:not(:last-child) {
+    margin-right: var(--spacing-xl);
+  }
+  
+  /* Espaçamentos para direção column */
+  .stack--direction-column.stack--spacing-none > *:not(:last-child) {
+    margin-bottom: 0;
+  }
+  
+  .stack--direction-column.stack--spacing-xs > *:not(:last-child) {
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .stack--direction-column.stack--spacing-sm > *:not(:last-child) {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .stack--direction-column.stack--spacing-medium > *:not(:last-child) {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .stack--direction-column.stack--spacing-lg > *:not(:last-child) {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .stack--direction-column.stack--spacing-xl > *:not(:last-child) {
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  /* Espaçamentos para direção row-reverse */
+  .stack--direction-row-reverse.stack--spacing-none > *:not(:last-child) {
+    margin-left: 0;
+  }
+  
+  .stack--direction-row-reverse.stack--spacing-xs > *:not(:last-child) {
+    margin-left: var(--spacing-xs);
+  }
+  
+  .stack--direction-row-reverse.stack--spacing-sm > *:not(:last-child) {
+    margin-left: var(--spacing-sm);
+  }
+  
+  .stack--direction-row-reverse.stack--spacing-medium > *:not(:last-child) {
+    margin-left: var(--spacing-md);
+  }
+  
+  .stack--direction-row-reverse.stack--spacing-lg > *:not(:last-child) {
+    margin-left: var(--spacing-lg);
+  }
+  
+  .stack--direction-row-reverse.stack--spacing-xl > *:not(:last-child) {
+    margin-left: var(--spacing-xl);
+  }
+  
+  /* Espaçamentos para direção column-reverse */
+  .stack--direction-column-reverse.stack--spacing-none > *:not(:last-child) {
+    margin-top: 0;
+  }
+  
+  .stack--direction-column-reverse.stack--spacing-xs > *:not(:last-child) {
+    margin-top: var(--spacing-xs);
+  }
+  
+  .stack--direction-column-reverse.stack--spacing-sm > *:not(:last-child) {
+    margin-top: var(--spacing-sm);
+  }
+  
+  .stack--direction-column-reverse.stack--spacing-medium > *:not(:last-child) {
+    margin-top: var(--spacing-md);
+  }
+  
+  .stack--direction-column-reverse.stack--spacing-lg > *:not(:last-child) {
+    margin-top: var(--spacing-lg);
+  }
+  
+  .stack--direction-column-reverse.stack--spacing-xl > *:not(:last-child) {
+    margin-top: var(--spacing-xl);
+  }
+  
+  /* Alinhamentos */
+  .stack--justify-flex-start {
+    justify-content: flex-start;
+  }
+  
+  .stack--justify-center {
+    justify-content: center;
+  }
+  
+  .stack--justify-flex-end {
+    justify-content: flex-end;
+  }
+  
+  .stack--justify-space-between {
+    justify-content: space-between;
+  }
+  
+  .stack--justify-space-around {
+    justify-content: space-around;
+  }
+  
+  .stack--justify-space-evenly {
+    justify-content: space-evenly;
+  }
+  
+  .stack--align-flex-start {
+    align-items: flex-start;
+  }
+  
+  .stack--align-center {
+    align-items: center;
+  }
+  
+  .stack--align-flex-end {
+    align-items: flex-end;
+  }
+  
+  .stack--align-stretch {
+    align-items: stretch;
+  }
+  
+  .stack--align-baseline {
+    align-items: baseline;
+  }
+  
+  /* Wrapping */
+  .stack--wrap-nowrap {
+    flex-wrap: nowrap;
+  }
+  
+  .stack--wrap-wrap {
+    flex-wrap: wrap;
+  }
+  
+  .stack--wrap-wrap-reverse {
+    flex-wrap: wrap-reverse;
+  }
+  
+  /* Estilos para dividers */
+  .stack__divider {
+    align-self: stretch;
+  }
+  
+  /* Se o divider estiver em uma stack horizontal, ajusta para ser vertical */
+  .stack--direction-row .stack__divider,
+  .stack--direction-row-reverse .stack__divider {
+    height: auto;
+  }
+  
+  /* Se o divider estiver em uma stack vertical, ajusta para ser horizontal */
+  .stack--direction-column .stack__divider,
+  .stack--direction-column-reverse .stack__divider {
+    width: auto;
+  }

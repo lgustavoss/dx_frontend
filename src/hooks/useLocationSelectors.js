@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { api } from '../axiosConfig';
 import { useDebounce } from './useDebounce';
-import { useAlert } from '../Components/Alert/AlertContext';
+import { useAlert } from '../Components/ui/Feedback/Alert/AlertContext';
 
 export function useLocationSelectors() {
   const [ufs, setUfs] = useState([]);
@@ -21,7 +21,6 @@ export function useLocationSelectors() {
   const searchUfRef = useRef(null);
   const searchCidadeRef = useRef(null);
   const cidadesCache = useRef({});
-  
   const { addAlert } = useAlert();
   
   const debouncedUfSearch = useDebounce(searchUfInternal, 300);

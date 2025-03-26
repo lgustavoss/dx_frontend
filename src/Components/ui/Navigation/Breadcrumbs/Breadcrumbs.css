@@ -1,0 +1,89 @@
+/* Estilos para o componente Breadcrumbs */
+.breadcrumbs {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .breadcrumbs__list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 5px;
+  }
+  
+  .breadcrumbs__item {
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+  }
+  
+  .breadcrumbs__item--active {
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+  
+  .breadcrumbs__link {
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .breadcrumbs__link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+  
+  .breadcrumbs__link--home {
+    font-weight: 500;
+  }
+  
+  .breadcrumbs__text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+  }
+  
+  .breadcrumbs__separator {
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 5px;
+    font-size: 12px;
+  }
+  
+  .breadcrumbs__icon {
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .breadcrumbs {
+      padding: 8px 12px;
+    }
+  
+    .breadcrumbs__text {
+      max-width: 120px;
+    }
+    
+    .breadcrumbs__link--home .breadcrumbs__text {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .breadcrumbs__text {
+      max-width: 80px;
+    }
+  }

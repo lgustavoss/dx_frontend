@@ -1,0 +1,130 @@
+/* Estilos para o componente Card */
+.card {
+    margin-bottom: 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  /* Variante padrão */
+  .card--default {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Variante primária */
+  .card--primary {
+    background-color: rgba(3, 61, 124, 0.1);
+  }
+  
+  /* Variante secundária */
+  .card--secondary {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Variante outlined */
+  .card--outlined {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Borda inferior */
+  .card--bordered {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .card--no-border-bottom {
+    border-bottom: none !important;
+    margin-bottom: 0;
+  }
+  
+  /* Largura completa */
+  .card--full-width {
+    width: 100%;
+  }
+  
+  /* Variações de padding */
+  .card--padding-none {
+    padding: 0;
+  }
+  
+  .card--padding-small {
+    padding: 10px;
+  }
+  
+  .card--padding-medium {
+    padding: 20px;
+  }
+  
+  .card--padding-large {
+    padding: 30px;
+  }
+  
+  /* Cabeçalho do card */
+  .card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Título do card */
+  .card__title {
+    font-size: 22px;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Título com borda esquerda */
+  .card__title--left-bordered {
+    padding-left: 10px;
+    border-left: 4px solid var(--primary-color);
+  }
+  
+  /* Área de ação no cabeçalho */
+  .card__header-action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Conteúdo do card */
+  .card__content {
+    /* Conteúdo flexível */
+  }
+  
+  /* Hover */
+  .card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .card {
+      margin-bottom: 20px;
+    }
+    
+    .card--padding-medium {
+      padding: 15px;
+    }
+    
+    .card--padding-large {
+      padding: 20px;
+    }
+    
+    .card__title {
+      font-size: 18px;
+    }
+    
+    .card__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .card__header-action {
+      margin-top: 10px;
+      width: 100%;
+      justify-content: flex-end;
+    }
+  }

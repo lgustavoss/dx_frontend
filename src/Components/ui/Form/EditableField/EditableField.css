@@ -1,0 +1,214 @@
+/* Estilos para o componente EditableField */
+.editable-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    position: relative;
+  }
+  
+  .editable-field--full-width {
+    width: 100%;
+  }
+  
+  /* Label do campo */
+  .editable-field__label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+  }
+  
+  /* Container de exibição do valor */
+  .editable-field__display {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 8px 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    word-break: break-word;
+    transition: all 0.3s ease;
+  }
+  
+  .editable-field__value {
+    flex: 1;
+    color: white;
+  }
+  
+  /* Botão de edição */
+  .editable-field__edit-btn {
+    position: absolute;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .editable-field__display:hover .editable-field__edit-btn {
+    opacity: 1;
+  }
+  
+  .editable-field__edit-btn:hover {
+    color: var(--primary-color);
+  }
+  
+  /* Container de edição */
+  .editable-field__edit-container {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    align-items: flex-start;
+  }
+  
+  .editable-field__input-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Campos de entrada */
+  .editable-field__input,
+  .editable-field__textarea,
+  .editable-field__select {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .editable-field__input:focus,
+  .editable-field__textarea:focus,
+  .editable-field__select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+  
+  .editable-field__textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  /* Opções do select */
+  .editable-field__select option {
+    background-color: rgba(30, 30, 30, 0.95);
+    color: white;
+    padding: 10px;
+  }
+  
+  /* Botões de ação */
+  .editable-field__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .editable-field__save-btn,
+  .editable-field__cancel-btn,
+  .editable-field__search-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .editable-field__save-btn:hover {
+    background-color: rgba(0, 128, 0, 0.3);
+    color: #fff;
+  }
+  
+  .editable-field__cancel-btn:hover {
+    background-color: rgba(255, 0, 0, 0.3);
+    color: #fff;
+  }
+  
+  .editable-field__search-btn:hover {
+    background-color: rgba(0, 123, 255, 0.3);
+    color: #fff;
+  }
+  
+  .editable-field__search-btn.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+    position: relative;
+  }
+  
+  .editable-field__search-btn.loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Erros de validação */
+  .editable-field__error {
+    color: #ff6b6b;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  .editable-field__input.has-error,
+  .editable-field__textarea.has-error,
+  .editable-field__select.has-error {
+    border-color: #ff6b6b;
+  }
+  
+  /* Campos desabilitados */
+  .editable-field__input:disabled,
+  .editable-field__textarea:disabled,
+  .editable-field__select:disabled,
+  .editable-field__save-btn:disabled,
+  .editable-field__cancel-btn:disabled,
+  .editable-field__search-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .editable-field__edit-container {
+      flex-direction: column;
+    }
+    
+    .editable-field__actions {
+      flex-direction: row;
+      width: 100%;
+      margin-top: 5px;
+    }
+    
+    .editable-field__save-btn,
+    .editable-field__cancel-btn,
+    .editable-field__search-btn {
+      flex: 1;
+    }
+  }

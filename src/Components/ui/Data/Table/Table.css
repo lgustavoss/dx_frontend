@@ -1,0 +1,186 @@
+/* Estilos para o componente Table */
+
+/* Container responsivo */
+.ui-table-responsive {
+    overflow-x: auto;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  /* Tabela base */
+  .ui-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    color: white;
+    background-color: transparent;
+  }
+  
+  /* Variante com layout fixo */
+  .ui-table--fixed {
+    table-layout: fixed;
+  }
+  
+  /* Variante com bordas */
+  .ui-table--bordered,
+  .ui-table--bordered .ui-table__header-cell,
+  .ui-table--bordered .ui-table__cell {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Células de cabeçalho */
+  .ui-table__header-cell {
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+  }
+  
+  /* Células de conteúdo */
+  .ui-table__cell {
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  /* Variante com listras */
+  .ui-table--striped .ui-table__row:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Variante com hover */
+  .ui-table--hover .ui-table__row:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Variante compacta */
+  .ui-table--compact .ui-table__header-cell,
+  .ui-table--compact .ui-table__cell {
+    padding: 8px;
+  }
+  
+  /* Estado de carregamento */
+  .ui-table__loading-cell,
+  .ui-table__empty-cell {
+    text-align: center;
+    padding: 30px !important;
+  }
+  
+  .ui-table__loading-message,
+  .ui-table__empty-message {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+  }
+  
+  /* Célula de ações */
+  .ui-table__action-cell {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+  }
+  
+  /* Responsividade para telas menores */
+  @media (max-width: 768px) {
+    .ui-table--responsive {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+    }
+    
+    .ui-table--responsive thead,
+    .ui-table--responsive tbody,
+    .ui-table--responsive th,
+    .ui-table--responsive td,
+    .ui-table--responsive tr {
+      display: block;
+    }
+    
+    .ui-table--responsive thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    
+    .ui-table--responsive tr {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      margin-bottom: 10px;
+    }
+    
+    .ui-table--responsive td {
+      border: none !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+      position: relative;
+      padding-left: 50% !important;
+      text-align: left;
+      min-height: 30px;
+    }
+    
+    .ui-table--responsive td:last-child {
+      border-bottom: 0 !important;
+    }
+    
+    .ui-table--responsive td::before {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      font-weight: bold;
+      content: attr(data-label);
+    }
+    
+    .ui-table--responsive .ui-table__action-cell {
+      justify-content: flex-start;
+    }
+  }
+
+  /* Adicionando estilos para TableRow e TableCell */
+
+  /* Estilos para alinhamento de célula */
+  .ui-table__cell--align-left,
+  .ui-table__header-cell--align-left {
+    text-align: left;
+  }
+  
+  .ui-table__cell--align-center,
+  .ui-table__header-cell--align-center {
+    text-align: center;
+  }
+  
+  .ui-table__cell--align-right,
+  .ui-table__header-cell--align-right {
+    text-align: right;
+  }
+  
+  /* Estilos para truncamento de texto */
+  .ui-table__cell--truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 0;
+  }
+  
+  /* Estados adicionais para linhas */
+  .ui-table__row--selected {
+    background-color: rgba(3, 61, 124, 0.3) !important;
+  }
+  
+  .ui-table__row--highlighted {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+  }
+  
+  /* Melhoria no data-label para visualização responsiva */
+  @media (max-width: 768px) {
+    .ui-table--responsive td::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      font-weight: bold;
+    }
+  }

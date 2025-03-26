@@ -1,0 +1,48 @@
+/* Tokens de Espaçamento */
+
+:root {
+    /* Espaçamentos base (em pixels) */
+    --spacing-none: 0;
+    --spacing-4xs: 2px;
+    --spacing-3xs: 4px;
+    --spacing-2xs: 8px;
+    --spacing-xs: 12px;
+    --spacing-sm: 16px;
+    --spacing-md: 20px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 40px;
+    --spacing-3xl: 48px;
+    --spacing-4xl: 64px;
+    --spacing-5xl: 80px;
+    --spacing-6xl: 96px;
+    
+    /* Tokens para valores específicos */
+    --spacing-container-padding: var(--spacing-2xl); /* 40px */
+    --spacing-section-margin: var(--spacing-2xl); /* 40px */
+    --spacing-section-padding: var(--spacing-md); /* 20px */
+    --spacing-card-padding-small: var(--spacing-xs); /* 12px */
+    --spacing-card-padding-medium: var(--spacing-md); /* 20px */
+    --spacing-card-padding-large: var(--spacing-2xl); /* 40px */
+    --spacing-input-padding: var(--spacing-xs); /* 12px */
+    --spacing-button-padding-vertical: var(--spacing-xs); /* 12px */
+    --spacing-button-padding-horizontal: var(--spacing-sm); /* 16px */
+    --spacing-grid-gap: var(--spacing-md); /* 20px */
+    --spacing-grid-gap-small: var(--spacing-xs); /* 12px */
+    --spacing-grid-gap-large: var(--spacing-xl); /* 32px */
+    
+    /* Aliases para variáveis existentes (legado) */
+    --container-padding: var(--spacing-container-padding);
+  }
+  
+  /* Media queries para espaçamentos responsivos */
+  @media (max-width: 768px) {
+    :root {
+      --spacing-container-padding: var(--spacing-md); /* 20px */
+      --spacing-section-margin: var(--spacing-xl); /* 32px */
+      --spacing-section-padding: var(--spacing-sm); /* 16px */
+      --spacing-card-padding-medium: var(--spacing-sm); /* 16px */
+      --spacing-card-padding-large: var(--spacing-lg); /* 24px */
+      --spacing-grid-gap: var(--spacing-sm); /* 16px */
+    }
+  }

@@ -1,0 +1,135 @@
+.container-usuario {
+    /* Herda estilos de .container-base definido em App.css */
+    text-align: center; /* Propriedade específica deste container */
+}
+
+.container-usuario h1 {
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+}
+
+.add-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.add-button svg {
+    margin-right: 5px;
+}
+
+.button-add {
+    width: 200px;
+    height: 60px;
+    background-color: var(--button-background-color);
+    border: var(--button-border-color);
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    text-shadow: none;
+    color: var(--button-text-color);
+    transition: background-color 0.3s ease;
+    bottom: 20px;
+}
+
+.button-add:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+/* Estilos específicos da página de listagem de usuários */
+
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+
+/* Estilos da tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--spacing-md);
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    color: #fff;
+}
+
+th {
+    background-color: rgba(3, 61, 124, 0.5);
+    font-weight: 600;
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Botão de edição */
+.edit-button {
+    background-color: var(--button-background-color);
+    font-size: 20px;
+    color: var(--color-white);
+    border: var(--border-thin-solid) var(--color-white);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+    position: relative;
+}
+
+.edit-button:hover {
+    background-color: var(--color-white-alpha-10);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    th, td {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .edit-button {
+        padding: 4px 8px;
+        font-size: 16px;
+    }
+}
+
+.inactivate-checkbox {
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.alert {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--alert-error-color); 
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadeOut 5s forwards;
+  }
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}

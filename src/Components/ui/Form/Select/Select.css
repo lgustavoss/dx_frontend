@@ -1,0 +1,129 @@
+/* Estilos para o componente Select */
+.select-component {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .select-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+  
+  .required-indicator {
+    color: var(--alert-error-color);
+    margin-left: 2px;
+  }
+  
+  .select-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .select-input {
+    width: 100%;
+    padding: 10px 40px 10px 12px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+  }
+  
+  .select-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(3, 61, 124, 0.5);
+  }
+  
+  .select-input-error {
+    border-color: var(--alert-error-color);
+    background-color: rgba(255, 51, 51, 0.1);
+  }
+  
+  .select-input-success {
+    border-color: var(--alert-success-color);
+    background-color: rgba(76, 175, 80, 0.1);
+  }
+  
+  .select-input-disabled {
+    background-color: rgba(128, 128, 128, 0.2);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+  }
+  
+  .select-input-focused {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(3, 61, 124, 0.5);
+  }
+  
+  .select-icon {
+    position: absolute;
+    right: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+  }
+  
+  .select-input:focus + .select-icon {
+    transform: rotate(180deg);
+    color: var(--primary-color);
+  }
+  
+  .select-status-icon {
+    position: absolute;
+    right: 40px;
+    font-size: 16px;
+  }
+  
+  .error-icon {
+    color: var(--alert-error-color);
+  }
+  
+  .success-icon {
+    color: var(--alert-success-color);
+  }
+  
+  .error-message {
+    color: var(--alert-error-color);
+    font-size: 12px;
+    margin-top: 4px;
+    margin-left: 2px;
+  }
+  
+  /* Estilização para as opções do select */
+  .select-input option {
+    background-color: rgba(30, 30, 30, 0.95);
+    color: white;
+    padding: 10px;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .select-input {
+      font-size: 14px;
+      padding: 8px 35px 8px 10px;
+    }
+    
+    .select-icon {
+      right: 10px;
+    }
+    
+    .select-status-icon {
+      right: 35px;
+    }
+  }

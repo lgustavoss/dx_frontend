@@ -1,0 +1,155 @@
+/* Estilos para o componente TextInput */
+.input-component {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .input-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+  
+  .required-indicator {
+    color: var(--alert-error-color);
+    margin-left: 2px;
+  }
+  
+  .input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .input-icon {
+    position: absolute;
+    left: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+  }
+  
+  .text-input {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .text-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(3, 61, 124, 0.5);
+  }
+  
+  .text-input-error {
+    border-color: var(--alert-error-color);
+    background-color: rgba(255, 51, 51, 0.1);
+  }
+  
+  .text-input-success {
+    border-color: var(--alert-success-color);
+    background-color: rgba(76, 175, 80, 0.1);
+  }
+  
+  .text-input-disabled {
+    background-color: rgba(128, 128, 128, 0.2);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+  }
+  
+  .text-input-readonly {
+    background-color: rgba(128, 128, 128, 0.1);
+    cursor: default;
+  }
+  
+  .text-input-focused {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(3, 61, 124, 0.5);
+  }
+  
+  .input-status-icon {
+    position: absolute;
+    right: 10px;
+    font-size: 16px;
+  }
+  
+  .error-icon {
+    color: var(--alert-error-color);
+  }
+  
+  .success-icon {
+    color: var(--alert-success-color);
+  }
+  
+  .search-btn {
+    background-color: var(--button-background-color);
+    color: #4CAF50;
+    border: var(--button-border-color);
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 5px;
+  }
+  
+  .search-btn:hover {
+    background-color: rgba(76, 175, 80, 0.3);
+  }
+  
+  .search-btn.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+    animation: pulse 1.5s infinite;
+  }
+  
+  .error-message {
+    color: var(--alert-error-color);
+    font-size: 12px;
+    margin-top: 4px;
+    margin-left: 2px;
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 0.7;
+    }
+  }
+  
+  /* Estilo para quando há um ícone, ajustar o padding do input */
+  .input-icon + .text-input {
+    padding-left: 35px;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .input-container {
+      flex-direction: column;
+    }
+    
+    .search-btn {
+      margin-top: 5px;
+      margin-left: 0;
+      align-self: flex-end;
+    }
+  }

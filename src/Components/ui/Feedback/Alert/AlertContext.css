@@ -1,0 +1,135 @@
+/* Container para todos os alertas */
+.global-alerts {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+}
+
+/* Estilo base para alertas */
+.alert {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: white;
+  min-width: 280px;
+  max-width: 100%;
+  animation: alertSlideIn 0.3s ease-out forwards;
+  backdrop-filter: blur(5px);
+  border-left: 4px solid transparent;
+}
+
+/* Animação de entrada */
+@keyframes alertSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animação de saída */
+.alert-exit {
+  animation: alertSlideOut 0.5s ease-out forwards;
+}
+
+@keyframes alertSlideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+/* Conteúdo do alerta */
+.alert-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+/* Ícone do alerta */
+.alert-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* Mensagem do alerta */
+.alert-message {
+  font-size: 14px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* Botão de fechar */
+.alert-close-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  transition: color 0.2s;
+  border-radius: 50%;
+}
+
+.alert-close-btn:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Tipo: Sucesso */
+.alert-success {
+  background-color: rgba(76, 175, 80, 0.9);
+  border-left-color: #2e7d32;
+}
+
+/* Tipo: Erro */
+.alert-error {
+  background-color: rgba(244, 67, 54, 0.9);
+  border-left-color: #d32f2f;
+}
+
+/* Tipo: Informação */
+.alert-info {
+  background-color: rgba(33, 150, 243, 0.9);
+  border-left-color: #1976d2;
+}
+
+/* Tipo: Aviso */
+.alert-warning {
+  background-color: rgba(255, 152, 0, 0.9);
+  border-left-color: #ef6c00;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .global-alerts {
+    right: 10px;
+    left: 10px;
+    max-width: calc(100% - 20px);
+  }
+  
+  .alert {
+    width: 100%;
+    min-width: auto;
+  }
+}

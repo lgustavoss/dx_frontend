@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { api } from '../axiosConfig';
 
 export function useUserManagement() {
@@ -90,5 +90,3 @@ export function useUserManagement() {
     currentUser
   };
 }
-
-export default useUserManagement;

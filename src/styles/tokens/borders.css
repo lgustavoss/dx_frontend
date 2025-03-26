@@ -1,0 +1,61 @@
+/* Tokens de Bordas e Arredondamentos */
+
+:root {
+    /* Larguras de borda */
+    --border-width-none: 0;
+    --border-width-thin: 1px;
+    --border-width-thick: 2px;
+    --border-width-heavy: 4px;
+    
+    /* Estilos de borda */
+    --border-style-none: none;
+    --border-style-solid: solid;
+    --border-style-dashed: dashed;
+    --border-style-dotted: dotted;
+    
+    /* Raios de borda */
+    --border-radius-none: 0;
+    --border-radius-xs: 2px;
+    --border-radius-sm: 4px;
+    --border-radius-md: 6px;
+    --border-radius-lg: 8px;
+    --border-radius-xl: 12px;
+    --border-radius-2xl: 16px;
+    --border-radius-3xl: 24px;
+    --border-radius-full: 9999px;
+    
+    /* Tokens compostos de borda */
+    --border-thin-solid: var(--border-width-thin) var(--border-style-solid);
+    --border-thick-solid: var(--border-width-thick) var(--border-style-solid);
+    --border-thin-dashed: var(--border-width-thin) var(--border-style-dashed);
+    
+    /* Cores de borda */
+    --border-color-light: var(--color-white-alpha-20);
+    --border-color-medium: var(--color-white-alpha-40);
+    --border-color-dark: var(--color-white-alpha-60);
+    --border-color-primary: var(--color-primary-600);
+    --border-color-error: var(--color-error-500);
+    --border-color-success: var(--color-success-500);
+    
+    /* Tokens específicos para elementos */
+    --border-input: var(--border-thin-solid) var(--border-color-medium);
+    --border-input-focus: var(--border-thin-solid) var(--color-primary-600);
+    --border-input-error: var(--border-thin-solid) var(--color-error-500);
+    --border-card: var(--border-thin-solid) var(--border-color-light);
+    --border-modal: var(--border-thin-solid) var(--border-color-medium);
+    --border-section: var(--border-thin-solid) var(--border-color-light);
+    --border-divider: var(--border-thin-solid) var(--border-color-light);
+    --border-button: var(--border-thin-solid) var(--color-white);
+    
+    /* Tokens específicos de arredondamento para elementos */
+    --border-radius-button: var(--border-radius-md);
+    --border-radius-input: var(--border-radius-md);
+    --border-radius-card: var(--border-radius-lg);
+    --border-radius-modal: var(--border-radius-lg);
+    --border-radius-pill: var(--border-radius-full);
+    --border-radius-avatar: var(--border-radius-full);
+    --border-radius-container: var(--border-radius-xl);
+    
+    /* Aliases para variáveis existentes (legado) */
+    --button-border-color: var(--border-button);
+  }

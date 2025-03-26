@@ -1,0 +1,30 @@
+/* Estilos base para o grid responsivo */
+.responsive-grid {
+    display: grid;
+    width: 100%;
+  }
+  
+  /* Variações de gap (espaçamento) */
+  .responsive-grid--gap-none {
+    gap: 0;
+  }
+  
+  .responsive-grid--gap-small {
+    gap: 10px;
+  }
+  
+  .responsive-grid--gap-medium {
+    gap: 20px;
+  }
+  
+  .responsive-grid--gap-large {
+    gap: 30px;
+  }
+  
+  /* Grid item - estilo opcional para itens dentro do grid */
+  .responsive-grid-item {
+    width: 100%;
+    min-width: 0; /* Permite que o conteúdo se reduza corretamente */
+  }
+  
+  /* Media queries para ajustes responsivos são injetados dinamicamente via JS */

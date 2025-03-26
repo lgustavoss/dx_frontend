@@ -1,0 +1,191 @@
+/* Estilos comuns para os componentes de loading */
+
+/* LoadingIndicator */
+.loading-indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .loading-indicator--full-width {
+    width: 100%;
+  }
+  
+  .loading-indicator--centered {
+    display: flex;
+    margin: 0 auto;
+  }
+  
+  /* Tamanhos */
+  .loading-indicator--small {
+    font-size: 12px;
+  }
+  
+  .loading-indicator--medium {
+    font-size: 16px;
+  }
+  
+  .loading-indicator--large {
+    font-size: 20px;
+  }
+  
+  /* Cores */
+  .loading-indicator--primary {
+    color: var(--primary-color);
+  }
+  
+  .loading-indicator--white {
+    color: white;
+  }
+  
+  .loading-indicator--success {
+    color: var(--alert-success-color);
+  }
+  
+  .loading-indicator--error {
+    color: var(--alert-error-color);
+  }
+  
+  /* Texto de loading */
+  .loading-text {
+    margin-left: 8px;
+    font-weight: 500;
+  }
+  
+  /* Spinner de carregamento */
+  .loading-spinner {
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    border: 0.2em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner 0.75s linear infinite;
+  }
+  
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Loading Dots */
+  .loading-dots {
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
+  }
+  
+  .loading-dots .dot {
+    width: 0.5em;
+    height: 0.5em;
+    background-color: currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    animation: dots 1.4s infinite ease-in-out both;
+  }
+  
+  .loading-dots .dot:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+  
+  .loading-dots .dot:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+  
+  @keyframes dots {
+    0%, 80%, 100% { 
+      transform: scale(0);
+    } 
+    40% { 
+      transform: scale(1.0);
+    }
+  }
+  
+  /* Loading Pulse */
+  .loading-pulse {
+    width: 1em;
+    height: 1em;
+    background-color: currentColor;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 0.7;
+    }
+  }
+  
+  /* LoadingOverlay */
+  .loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+  }
+  
+  .loading-overlay--full-screen {
+    position: fixed;
+    z-index: 9999;
+  }
+  
+  .loading-overlay--container {
+    position: absolute;
+  }
+  
+  .loading-overlay__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .loading-overlay__message {
+    margin: 0;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  
+  /* Versão simplificada para usar em botões */
+  .btn-loading {
+    position: relative;
+    pointer-events: none;
+  }
+  
+  .btn-loading .btn-text {
+    visibility: hidden;
+  }
+  
+  .btn-loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1em;
+    height: 1em;
+    margin-top: -0.5em;
+    margin-left: -0.5em;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    border-right-color: transparent;
+    animation: spinner 0.75s linear infinite;
+  }
