@@ -1,9 +1,10 @@
 import { useEffect, useState, useRef, useContext } from 'react';
 import { FaEdit, FaSave, FaTimes } from 'react-icons/fa';
-import { api } from '../../axiosConfig';
-import { useAlert } from '../../Components/ui/Feedback/Alert/AlertContext';
-import { SidebarContext } from '../../Components/ui/Navigation/Sidebar/SidebarContext';
-import { Container, Card, Box, Grid, Column, Stack, Divider } from '../../Components/ui/Layout';
+import { api } from "../../../axiosConfig";
+import { useAlert } from "../../../contexts/alert/AlertContext";
+import { useUI } from "../../../contexts/ui/UIContext";
+import { Container, Box, Grid, Column, Stack, Divider } from '../../ui/Layout';
+import Card from "../../ui/Card/Card";
 import './Perfil.css';
 
 const Perfil = () => {
@@ -12,7 +13,7 @@ const Perfil = () => {
     const [editValue, setEditValue] = useState('');
     const editRef = useRef(null);
     const { addAlert } = useAlert();
-    const { isSidebarOpen } = useContext(SidebarContext);
+    const { isSidebarOpen } = useUI();
 
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('user'));

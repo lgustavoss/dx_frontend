@@ -70,8 +70,16 @@ api.interceptors.response.use(
   response => response,
   async error => {
     const originalRequest = error.config;
-
-    // Se receber um 401 e não estiver tentando refresh já
+    
+    // ADICIONADO: Verificar se é uma requisição de login que falhou
+    // Não tente atualizar o token se for uma tentativa de login falha
+    if (error.response && error.response.status === 401 && 
+        (originalRequest.url === '/token/' || originalRequest.url.includes('/token'))) {
+      console.log('Login falhou, enviando erro para o componente tratar');
+      return Promise.reject(error);  // Permite que o componente Login trate o erro
+    }
+    
+    // Se receber um 401 em outras requisições e não estiver tentando refresh já
     if (error.response && error.response.status === 401 && !originalRequest._retry) {
       if (isRefreshing) {
         // Se já está atualizando o token, coloca a requisição na fila

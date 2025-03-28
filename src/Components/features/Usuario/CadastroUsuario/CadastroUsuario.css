@@ -117,28 +117,3 @@ input:checked + .slider:before {
 .button-cadastrar:hover {
     background-color: var(--button-hover-background-color);
 }
-
-
-.alert {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation: fadeOut 5s forwards;
-    color: white;
-}
-
-.alert.error {
-    background-color: var(--alert-error-color);
-  }
-  
-  .alert.success {
-    background-color: var(--alert-success-color);
-  }
-
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
-}

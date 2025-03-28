@@ -1,10 +1,11 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api } from '../../../axiosConfig';
-import { SidebarContext } from '../../../Components/ui/Navigation';
-import { useAlert } from '../../../Components/ui/Feedback/Alert/AlertContext';
-import { Container, Card, Grid, Column, Stack, Box } from '../../../Components/ui/Layout';
-import { ButtonPrimary, ButtonSecondary } from '../../../Components/ui/Button';
+import { api } from "../../../../axiosConfig";
+import { useUI } from "../../../../contexts/ui/UIContext";
+import { useAlert } from "../../../../contexts/alert/AlertContext";
+import { Container, Box, Stack } from '../../../ui/Layout';
+import Card from '../../../ui/Card/Card';
+import { ButtonPrimary, ButtonSecondary } from '../../../ui/Button';
 import './CadastroUsuario.css';
 
 const CadastroUsuario = () => {
@@ -16,7 +17,7 @@ const CadastroUsuario = () => {
         is_active: true,
         is_staff: false
     });
-    const { isSidebarOpen } = useContext(SidebarContext);
+    const { isSidebarOpen } = useUI();
     const navigate = useNavigate();
     const { addAlert } = useAlert();
 

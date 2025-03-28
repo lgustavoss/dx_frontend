@@ -1,21 +1,25 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
-import { Container, Card, Box, Stack, Divider } from '../../../Components/ui/Layout';
-import { ButtonSecondary } from '../../../Components/ui/Button';
-import { Modal } from '../../../Components/ui/Feedback';
+import { Container, Box, Stack } from '../../../ui/Layout';
+import Card from '../../../ui/Card/Card';
+import { ButtonSecondary } from '../../../ui/Button';
+import { Modal } from '../../../ui/Feedback';
+import { useAlert } from '../../../../contexts/alert/AlertContext';
+import { useCliente } from '../../../../contexts/cliente/ClienteContext';
 import InformacoesEmpresa from './sections/InformacoesEmpresa';
 import Endereco from './sections/Endereco';
 import Responsavel from './sections/Responsavel';
 import InformacoesAdicionais from './sections/InformacoesAdicionais';
-import { api } from '../../../axiosConfig';
-import { useClienteForm } from '../../../hooks/useClienteForm';
+import { useClienteForm } from "../../../../hooks/useClienteForm";
 import './DetalheCliente.css';
 
 const DetalheCliente = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
+    const { fetchUserList } = useAuth(); // Assumindo que temos esse método no AuthContext
+    const { addAlert } = useAlert();
 
     // Usa o hook personalizado para gerenciar o formulário de cliente
     const {
@@ -39,17 +43,20 @@ const DetalheCliente = () => {
     } = useClienteForm(id);
 
     const editRef = useRef(null);
+    const { updateCliente } = useCliente();
 
     // Carrega os dados do cliente e usuários quando o componente é montado
     useEffect(() => {
         const fetchData = async () => {
             await loadCliente();
-            const response = await api.get('/usuario/users/');
-            setUsers(response.data.results || []);
+            
+            // Usando o método fetchUserList do AuthContext em vez de chamada direta à API
+            const usersList = await fetchUserList();
+            setUsers(usersList || []);
         };
         
         fetchData();
-    }, [loadCliente]);
+    }, [loadCliente, fetchUserList]);
 
     // Função para obter o nome do usuário a partir do ID
     const getUserName = useCallback((userId) => {
@@ -68,7 +75,7 @@ const DetalheCliente = () => {
         setEditingField(null);
     };
 
-    // Salvar a edição de um campo
+    // Salvar a edição de um campo usando o contexto
     const saveEdit = async () => {
         try {
             if (!editingField || editValue === cliente[editingField]) {
@@ -78,14 +85,16 @@ const DetalheCliente = () => {
 
             const payload = { [editingField]: editValue };
             
-            const response = await api.patch(`/cliente/clientes/${id}/`, payload);
+            const updatedCliente = await updateCliente(id, payload);
             
-            if (response.status === 200) {
+            if (updatedCliente) {
                 setCliente({ ...cliente, ...payload });
                 cancelEdit();
+                addAlert(`Campo ${editingField} atualizado com sucesso!`, 'success');
             }
         } catch (err) {
             console.error('Erro ao atualizar campo:', err);
+            addAlert('Erro ao atualizar campo. Tente novamente.', 'error');
         }
     };
 
@@ -131,7 +140,6 @@ const DetalheCliente = () => {
                         editRef={editRef}
                         setEditValue={setEditValue}
                         setCliente={setCliente}
-                        addAlert={locationSelectors.addAlert}
                         buscarEnderecoPorCEP={buscarEnderecoPorCEP}
                         id={id}
                         setSearchUf={locationSelectors.setSearchUf}

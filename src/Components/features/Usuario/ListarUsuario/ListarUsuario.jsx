@@ -1,11 +1,12 @@
 import { useEffect, useState, useContext } from 'react';
 import { FaEdit, FaPlus } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { api, addActivityListeners } from '../../../axiosConfig';
-import { SidebarContext } from '../../../Components/ui/Navigation';
-import { Container, Box, Stack, Card } from '../../../Components/ui/Layout';
-import { ButtonPrimary } from '../../../Components/ui/Button';
-import { Alert } from '../../../Components/ui/Feedback';
+import { api, addActivityListeners } from "../../../../axiosConfig";
+import { useUI } from '../../../../contexts/ui/UIContext';
+import { Container, Box, Stack } from '../../../ui/Layout';
+import Card from '../../../ui/Card/Card';
+import { ButtonPrimary } from '../../../ui/Button';
+import { Alert } from '../../../ui/Feedback';
 import './ListarUsuario.css';
 
 const ListarUsuario = () => {
@@ -13,7 +14,7 @@ const ListarUsuario = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
-    const { isSidebarOpen } = useContext(SidebarContext);
+    const { isSidebarOpen } = useUI();
 
     useEffect(() => {
         const fetchUsuarios = async () => {
@@ -49,18 +50,16 @@ const ListarUsuario = () => {
     };
 
     return (
-        <Container maxWidth="large" className={isSidebarOpen ? 'sidebar-open' : ''}>
-            <Box padding="md" textAlign="center">
+        <Container maxWidth="large" className={`${isSidebarOpen ? 'sidebar-open' : ''} container--glass`}>
+            <Card variant="primary" padding="lg">
                 <h1>Usuários Cadastrados</h1>
-            </Box>
-
-            <Card variant="primary" padding="md">
+                
                 {loading ? (
                     <Box padding="lg" textAlign="center">
                         <p>Carregando usuários...</p>
                     </Box>
                 ) : (
-                    <Stack spacing="lg" direction="column">
+                    <Stack spacing="xl" direction="column">
                         <Box className="table-responsive">
                             <table>
                                 <thead>
@@ -96,7 +95,7 @@ const ListarUsuario = () => {
                             </table>
                         </Box>
 
-                        <Box display="flex" justifyContent="center" marginTop="md">
+                        <Box className="add-button-container">
                             <ButtonPrimary 
                                 className="add-button" 
                                 onClick={handleAddUser}

@@ -52,9 +52,10 @@
   max-width: var(--container-max-width, 1200px);
   margin: 80px auto 0 auto;
   padding: var(--spacing-container-padding);
-  background-color: var(--color-white-alpha-15);
-  backdrop-filter: blur(10px);
-  border: var(--border-thick-solid) var(--border-color-light);
+  background-color: var(--color-primary-alpha-30); /* Fundo azul com 30% de opacidade */
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   border-radius: var(--border-radius-container);
   color: var(--color-white);
   position: relative;

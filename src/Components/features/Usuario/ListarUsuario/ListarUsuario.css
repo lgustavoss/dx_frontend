@@ -48,6 +48,7 @@
 .table-responsive {
     overflow-x: auto;
     width: 100%;
+    margin: 25px 0; /* Aumentando a margem vertical */
 }
 
 /* Estilos da tabela */
@@ -117,19 +118,32 @@ tbody tr:nth-child(even) {
     cursor: pointer;
 }
 
-.alert {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--alert-error-color); 
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation: fadeOut 5s forwards;
-  }
+/* Para adicionar mais espaço apenas na tabela de usuários */
+.card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0 30px; /* Margem superior e inferior aumentadas */
+}
 
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
+/* Se quiser mais espaço ao redor da última tabela para o botão de adicionar */
+.card .stack > .table-responsive:last-of-type {
+    margin-bottom: 30px;
+}
+
+/* Título dentro do Card */
+.card h1 {
+    margin-bottom: 20px;
+    padding: 10px 0;
+    color: var(--text-color);
+    font-size: var(--font-section-title);
+}
+
+/* Container com fundo semi-transparente */
+.container--glass {
+    background-color: var(--color-primary-alpha-30); /* Fundo azul com 30% de opacidade */
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 25px; /* Padding interno para espaçamento */
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { formatCNPJ } from '../../../../utils/formatters';
-import { EditableField } from '../../../../Components/ui/Form';
-import { Grid, Column } from '../../../../Components/ui/Layout';
+import { formatCNPJ } from "../../../../../utils/formatters";
+import { EditableField } from "../../../../../Components/ui/Form";
+import { Grid, Column } from "../../../../../Components/ui/Layout";
+import { useAlert } from '../../../../../contexts/alert/AlertContext';
 
 const InformacoesEmpresa = ({ 
   cliente, 
@@ -13,7 +14,6 @@ const InformacoesEmpresa = ({
   editRef,
   setEditValue,
   setCliente,
-  addAlert,
   id,
   buscarEnderecoPorCEP,
   setSearchUf,
@@ -23,6 +23,8 @@ const InformacoesEmpresa = ({
   setSearchCidadeInternal,
   setOriginalCidade
 }) => {
+  const { addAlert } = useAlert();
+
   return (
     <div className="detalhe-section">
       <h2>Informações da Empresa</h2>
@@ -111,7 +113,6 @@ InformacoesEmpresa.propTypes = {
   setEditValue: PropTypes.func.isRequired,
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, 
   setCliente: PropTypes.func.isRequired,
-  addAlert: PropTypes.func.isRequired,
   buscarEnderecoPorCEP: PropTypes.func,
   setSearchUf: PropTypes.func,
   setSearchUfInternal: PropTypes.func,

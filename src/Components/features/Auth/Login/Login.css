@@ -1,96 +1,122 @@
-.container-login {
-    width: 450px;
-    background-color: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.2);
-    padding: 40px;
-    border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+/* Estilos específicos para a página de login */
+
+/* Container de autenticação - centraliza o card verticalmente e horizontalmente */
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: transparent;
 }
 
-.container-login h1 {
-    text-align: center;
-    font-size: 30px;
-    color: #fff;
+/* Estilo específico para o card de login com tonalidade azul */
+.auth-container .card {
+  width: 100%;
+  max-width: 450px;
+  background-color: var(--color-primary-alpha-30); /* Fundo azul com 30% de opacidade */
+  backdrop-filter: blur(15px); /* Aumentado para melhor legibilidade */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  padding: 30px;
 }
 
+/* Título do formulário */
+.auth-container h1 {
+  margin-bottom: 30px;
+  text-align: center;
+  color: var(--color-white);
+  font-size: var(--font-section-title);
+  font-weight: var(--font-weight-heading);
+}
+
+/* Campos de entrada com ícone */
 .input-field {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 30px auto;
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .input-field input {
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    outline: none;
-    border: 2px solid rgba(255,255,255,0.2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: #fff;
-    padding: 20px 25px;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0 15px;
+  padding-right: 45px; /* Espaço para o ícone */
+  font-size: var(--font-input);
+  color: var(--color-white);
+  transition: border-color 0.3s ease;
 }
+
+.input-field input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
 .input-field input::placeholder {
-    color: #fff;
-}
-.icon {
-    position: absolute;
-    right: 25px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
-    color: #fff;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.recall-forget {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-}
-.recall-forget label, .recall-forget a {
-    color: #fff;
-}
-.recall-forget a:hover {
-    text-decoration: underline;
+.input-field .icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
 }
 
+/* Botão de login - usando os tokens de design */
 .login-button {
-    width: 100%;
-    height: 50px;
-    background-color: var(--button-background-color);
-    border: var(--button-border-color);
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--button-text-color);
-    transition: background-color 0.3s ease;
+  width: 100%;
+  height: 50px;
+  background-color: var(--primary-color);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  font-size: var(--font-button);
+  font-weight: var(--font-weight-button);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .login-button:hover {
-    background-color: var(--button-hover-background-color);
+  background-color: rgba(3, 61, 124, 0.85);
+  transform: translateY(-2px);
 }
 
-.alert {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--alert-error-color);;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    animation: fadeOut 5s forwards;
+.login-button:active {
+  transform: translateY(0);
 }
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
+
+/* Mensagem de erro */
+.error-message {
+  color: var(--alert-error-color);
+  text-align: center;
+  margin: 10px 0;
+  font-size: var(--font-small);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .auth-container .card {
+    padding: 20px;
+  }
+  
+  .auth-container h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  
+  .input-field {
+    margin-bottom: 15px;
+  }
+  
+  .login-button {
+    height: 45px;
+  }
 }

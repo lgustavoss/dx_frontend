@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { formatDate } from '../../../../utils/formatters';
-import EditableField from '../components/EditableField';
+import { formatDate } from "../../../../../utils/formatters";
+import { EditableField } from '../../../../../Components/ui/Form';
+import { useAlert } from '../../../../../contexts/alert/AlertContext';
 
 const Responsavel = ({ 
+  // remover addAlert dos props
   cliente,
   editingField,
   startEdit,
@@ -12,9 +14,10 @@ const Responsavel = ({
   editRef,
   setEditValue,
   setCliente,
-  addAlert,
   id
 }) => {
+  const { addAlert } = useAlert();
+  
   return (
     <div className="detalhe-section">
       <h2>Responsável</h2>
@@ -135,8 +138,7 @@ Responsavel.propTypes = {
   editRef: PropTypes.object.isRequired,
   setEditValue: PropTypes.func.isRequired,
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  setCliente: PropTypes.func.isRequired,
-  addAlert: PropTypes.func.isRequired
+  setCliente: PropTypes.func.isRequired
 };
 
 export default Responsavel;

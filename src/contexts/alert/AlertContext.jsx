@@ -1,55 +1,16 @@
 import React, { createContext, useState, useContext, useCallback } from 'react';
-import PropTypes from 'prop-types';
 import { FaCheckCircle, FaInfoCircle, FaExclamationTriangle, FaTimesCircle, FaTimes } from 'react-icons/fa';
 import './AlertContext.css';
 
-/**
- * Contexto para sistema de alertas da aplicação
- * Fornece feedback visual ao usuário para diferentes tipos de eventos
- */
 const AlertContext = createContext();
 
-/**
- * Hook para usar o contexto de alertas em qualquer componente
- * @returns {Object} Funções e estados do contexto de alertas
- */
-export const useAlert = () => useContext(AlertContext);
-
-/**
- * Provedor do contexto de alertas
- * @param {Object} props - Propriedades do componente
- * @param {React.ReactNode} props.children - Componentes filhos
- */
-export const AlertProvider = ({ children }) => {
-  // Estado para armazenar alertas ativos
+export function AlertProvider({ children }) {
   const [alerts, setAlerts] = useState([]);
-
-  /**
-   * Adiciona um alerta à lista
-   * @param {string} message - Mensagem a ser exibida
-   * @param {string} type - Tipo de alerta (success, error, info, warning)
-   * @param {number} timeout - Tempo em milissegundos para o alerta desaparecer
-   */
-  const addAlert = useCallback((message, type = 'info', timeout = 5000) => {
-    // Gera um ID único para o alerta
-    const id = Date.now() + Math.random().toString(36).substr(2, 5);
-    
-    // Adiciona o novo alerta à lista
-    setAlerts(prevAlerts => [...prevAlerts, { id, message, type, timeout }]);
-    
-    // Remove o alerta após o tempo definido
-    if (timeout !== 0) {
-      setTimeout(() => {
-        removeAlert(id);
-      }, timeout);
-    }
-  }, []);
-
-  /**
-   * Remove um alerta específico pela ID
-   * @param {string} id - ID do alerta a ser removido
-   */
+  
+  // Primeiro declare removeAlert
   const removeAlert = useCallback((id) => {
+    console.log(`Preparando para remover alerta ${id}`);
+    
     setAlerts(prevAlerts => 
       prevAlerts.map(alert => 
         alert.id === id 
@@ -60,10 +21,42 @@ export const AlertProvider = ({ children }) => {
     
     // Remove efetivamente após a animação de saída
     setTimeout(() => {
+      console.log(`Removendo efetivamente alerta ${id}`);
       setAlerts(prevAlerts => prevAlerts.filter(alert => alert.id !== id));
     }, 500); // Tempo da animação de saída
   }, []);
-
+  
+  // Função para gerar ID único
+  const generateId = () => `alert_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  
+  // Depois use removeAlert em addAlert
+  const addAlert = useCallback((message, type = 'info', timeout = 5000) => {
+    // Força timeout mínimo para cada tipo de alerta
+    let actualTimeout = timeout;
+    if (type === 'error') actualTimeout = Math.max(timeout, 15000); // Mínimo 15 segundos para erros
+    if (type === 'success') actualTimeout = Math.max(timeout, 3000); // Mínimo 3 segundos para sucesso
+    
+    console.log(`Adicionando alerta "${message}" (${type}) com timeout: ${actualTimeout}ms`);
+    
+    const id = generateId();
+    
+    setAlerts(prevAlerts => [
+      ...prevAlerts, 
+      { id, message, type, createdAt: Date.now() }
+    ]);
+    
+    console.log(`Alerta ${id} será removido após ${actualTimeout}ms`);
+    
+    // Usa setTimeout diretamente com o valor de timeout
+    const timerId = setTimeout(() => {
+      console.log(`Tempo esgotado para alerta ${id}, removendo...`);
+      removeAlert(id);
+    }, actualTimeout);
+    
+    // Armazena o ID do timer para limpeza se necessário
+    return id;
+  }, [removeAlert]);
+  
   /**
    * Função de conveniência para adicionar alertas de sucesso
    * @param {string} message - Mensagem de sucesso
@@ -150,10 +143,16 @@ export const AlertProvider = ({ children }) => {
       </div>
     </AlertContext.Provider>
   );
-};
+}
 
-AlertProvider.propTypes = {
-  children: PropTypes.node.isRequired
-};
-
-export default AlertContext;
+/**
+ * Hook para usar o contexto de alertas em qualquer componente
+ * @returns {Object} Funções e estados do contexto de alertas
+ */
+export function useAlert() {
+  const context = useContext(AlertContext);
+  if (context === undefined) {
+    throw new Error('useAlert deve ser usado dentro de um AlertProvider');
+  }
+  return context;
+}

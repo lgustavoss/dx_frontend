@@ -1,18 +1,19 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { FaUserCircle, FaBars } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../../contexts/auth/AuthContext';
+import { useUI } from '../../../../contexts/ui/UIContext';
 import './Navbar.css';
 
-const Navbar = ({ toggleSidebar }) => {
+const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [user, setUser] = useState(null);
     const dropdownRef = useRef(null);
     const navigate = useNavigate();
+    const { user, logout } = useAuth();
+    const { toggleSidebar } = useUI();
 
+    // Efeito para detectar cliques fora do dropdown
     useEffect(() => {
-        const userData = JSON.parse(localStorage.getItem('user'));
-        setUser(userData);
-
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setMenuOpen(false);
@@ -30,8 +31,8 @@ const Navbar = ({ toggleSidebar }) => {
     };
 
     const handleLogout = () => {
-        localStorage.clear();
-        window.location = '/';
+        logout();
+        navigate('/');
     };
 
     const handlePerfil = () => {
@@ -39,6 +40,7 @@ const Navbar = ({ toggleSidebar }) => {
         navigate('/perfil');
     };
 
+    // Se não houver usuário autenticado, não renderize a navbar
     if (!user) {
         return null;
     }
@@ -73,6 +75,6 @@ const Navbar = ({ toggleSidebar }) => {
             )}
         </nav>
     );
-}
+};
 
 export default Navbar;
