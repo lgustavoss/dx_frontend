@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useAlert } from '../Components/Alert/AlertContext';
+import { useAlert } from '../contexts/alert/AlertContext';
 import { cnpjService } from '../services/cnpjService';
 import { useCepSearch } from './useCepSearch';
 

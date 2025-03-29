@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from './Modal';
-import { ButtonPrimary, ButtonSecondary } from '../Button';
+import { ButtonPrimary, ButtonSecondary } from "../../Button";
 
 /**
  * Modal para exibir formulários

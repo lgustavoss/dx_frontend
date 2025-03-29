@@ -150,4 +150,9 @@
     --alert-success-color: var(--color-success-500);        /* #4CAF50 - Verde sucesso */
     --alert-warning-color: var(--color-warning-500);        /* #FF9800 - Laranja aviso */
     --alert-info-color: var(--color-info-500);              /* #2196F3 - Azul informação */
+
+    /* Efeitos de blur */
+    --blur-sm: blur(8px);
+    --blur-md: blur(15px);
+    --blur-lg: blur(20px);
   }

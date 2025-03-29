@@ -45,22 +45,36 @@
 
 /* Estilos específicos da página de listagem de usuários */
 
+/* Corrigir o container da tabela para evitar overflow horizontal */
 .table-responsive {
-    overflow-x: auto;
-    width: 100%;
+    overflow-x: auto; /* Mantém a rolagem apenas quando necessário */
+    width: calc(100% - 30px); /* Importante: considera os paddings laterais */
+    margin: 25px 15px; /* Ajusta as margens vertical e horizontal */
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 0; /* Remove padding do container da tabela */
 }
 
-/* Estilos da tabela */
+/* Ajuste específico para o Card que contém a tabela */
+.card {
+    padding: 25px; /* Aplica padding adequado ao card */
+    overflow: hidden; /* Previne que elementos filhos causem overflow */
+}
+
+/* Redefinir os estilos da tabela para evitar que ultrapasse o container */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: var(--spacing-md);
-    margin-top: 20px;
+    table-layout: fixed; /* Fixa o layout da tabela para melhor controle */
 }
 
-table, th, td {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
+/* Definir largura específica para colunas */
+th:nth-child(1), td:nth-child(1) { width: 50px; } /* ID */
+th:nth-child(2), td:nth-child(2) { width: 20%; } /* Nome */
+th:nth-child(3), td:nth-child(3) { width: 20%; } /* Username */
+th:nth-child(4), td:nth-child(4) { width: 25%; } /* Email - ocupa espaço disponível */
+th:nth-child(5), td:nth-child(5) { width: 15%; } /* Ativo */
+th:nth-child(6), td:nth-child(6) { width: 40px; } /* Ações */
 
 th, td {
     padding: 15px;
@@ -81,6 +95,14 @@ tbody tr:nth-child(even) {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Estilos específicos da coluna de ações */
+th:nth-child(6), /* Ações */
+td:nth-child(6) {
+    width: 16px; /* Reduzindo ainda mais a largura */
+    text-align: center;
+    padding: 5px; /* Reduzindo o padding para ficar mais compacto */
+}
+
 /* Botão de edição */
 .edit-button {
     background-color: var(--button-background-color);
@@ -97,6 +119,46 @@ tbody tr:nth-child(even) {
 
 .edit-button:hover {
     background-color: var(--color-white-alpha-10);
+}
+
+/* Botão de visualização */
+.view-button {
+    background-color: var(--button-background-color);
+    color: var(--color-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    width: 30px; /* Reduzindo ainda mais a largura */
+    height: 30px; /* Reduzindo a altura também */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.view-button:hover {
+    background-color: rgba(3, 61, 124, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Classe específica para célula de ações */
+.actions-cell {
+    padding: 8px !important;
+    text-align: center;
+}
+
+/* Melhorar o container do botão de adicionar */
+.add-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 0 15px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Responsividade */
@@ -117,19 +179,45 @@ tbody tr:nth-child(even) {
     cursor: pointer;
 }
 
-.alert {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--alert-error-color); 
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation: fadeOut 5s forwards;
-  }
+/* Para adicionar mais espaço apenas na tabela de usuários */
+.card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0 30px; /* Margem superior e inferior aumentadas */
+}
 
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
+/* Se quiser mais espaço ao redor da última tabela para o botão de adicionar */
+.card .stack > .table-responsive:last-of-type {
+    margin-bottom: 30px;
+}
+
+/* Título dentro do Card */
+.card h1 {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
+    font-size: var(--font-section-title);
+    text-align: center;
+}
+
+/* Container com fundo semi-transparente */
+.container--glass {
+    background-color: var(--color-primary-alpha-30); /* Fundo azul com 30% de opacidade */
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 30px; /* Aumenta o padding interno */
+    margin-top: 100px; /* Garante que haja espaço suficiente abaixo da navbar */
+}
+
+/* Título h1 */
+.container--glass h1 {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
+    font-size: var(--font-page-title);
+    text-align: center;
 }

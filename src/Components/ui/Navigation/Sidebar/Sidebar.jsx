@@ -1,10 +1,16 @@
 import { FaBars, FaUsers, FaUserCircle, FaBuilding } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useUI } from '../../../../contexts/ui/UIContext';
 import './Sidebar.css';
 
-const Sidebar = ({ isOpen, toggleSidebar }) => {
+const Sidebar = () => {
+    const { isSidebarOpen, toggleSidebar, activeRoute } = useUI();
+    
     return (
-        <div className={`sidebar ${isOpen ? 'open' : ''}`} onClick={(e) => e.stopPropagation()}>
+        <div 
+            className={`sidebar ${isSidebarOpen ? 'open' : ''}`} 
+            onClick={(e) => e.stopPropagation()} // Isso impede que cliques no sidebar cheguem ao content
+        >
             <div className="sidebar-header">
                 <FaBars className="hamburger-icon" onClick={toggleSidebar} />
                 <h2>Menu</h2>
@@ -12,19 +18,28 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             
             <ul className="menu-items">
                 <li>
-                    <Link to="/usuarios" className="menu-button">
+                    <Link 
+                        to="/usuarios" 
+                        className={`menu-button ${activeRoute === '/usuarios' ? 'active' : ''}`}
+                    >
                         <FaUsers className="menu-icon" />
                         <span>Usuários</span>
                     </Link>
                 </li>
                 <li>
-                    <Link to="/clientes" className="menu-button">
+                    <Link 
+                        to="/clientes" 
+                        className={`menu-button ${activeRoute === '/clientes' ? 'active' : ''}`}
+                    >
                         <FaBuilding className="menu-icon" />
                         <span>Clientes</span>
                     </Link>
                 </li>
                 <li>
-                    <Link to="/perfil" className="menu-button">
+                    <Link 
+                        to="/perfil" 
+                        className={`menu-button ${activeRoute === '/perfil' ? 'active' : ''}`}
+                    >
                         <FaUserCircle className="menu-icon" />
                         <span>Perfil</span>
                     </Link>

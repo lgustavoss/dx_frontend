@@ -71,3 +71,20 @@
       padding-right: var(--spacing-sm);
     }
   }
+
+  /* Adicionar estas classes para que Container tenha o mesmo visual */
+  .container.container--glass {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+  }
+  
+  .container.container--glass-primary {
+    background-color: var(--color-primary-alpha-30);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+  }
