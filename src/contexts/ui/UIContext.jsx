@@ -1,8 +1,11 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import { useState, useEffect, useContext, createContext, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
-// Criar o contexto
 const UIContext = createContext();
+
+export function useUI() {
+  return useContext(UIContext);
+}
 
 // Criar o provedor
 export function UIProvider({ children }) {
@@ -39,6 +42,11 @@ export function UIProvider({ children }) {
     setIsSidebarOpen(prev => !prev);
   };
 
+  // Função específica para fechar o sidebar
+  const closeSidebar = useCallback(() => {
+    setIsSidebarOpen(false);
+  }, []);
+
   // Configurar rota ativa
   const setRoute = (route) => {
     setActiveRoute(route);
@@ -47,6 +55,7 @@ export function UIProvider({ children }) {
   const value = {
     isSidebarOpen,
     toggleSidebar,
+    closeSidebar, // Nova função adicionada
     activeRoute,
     setRoute,
     isMobile
@@ -57,13 +66,4 @@ export function UIProvider({ children }) {
       {children}
     </UIContext.Provider>
   );
-}
-
-// Hook para usar o contexto
-export function useUI() {
-  const context = useContext(UIContext);
-  if (context === undefined) {
-    throw new Error('useUI deve ser usado dentro de um UIProvider');
-  }
-  return context;
 }

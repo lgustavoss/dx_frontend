@@ -7,7 +7,10 @@ const Sidebar = () => {
     const { isSidebarOpen, toggleSidebar, activeRoute } = useUI();
     
     return (
-        <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`} onClick={(e) => e.stopPropagation()}>
+        <div 
+            className={`sidebar ${isSidebarOpen ? 'open' : ''}`} 
+            onClick={(e) => e.stopPropagation()} // Isso impede que cliques no sidebar cheguem ao content
+        >
             <div className="sidebar-header">
                 <FaBars className="hamburger-icon" onClick={toggleSidebar} />
                 <h2>Menu</h2>

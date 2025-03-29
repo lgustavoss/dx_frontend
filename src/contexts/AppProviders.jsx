@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { AuthProvider } from './auth/AuthContext';
 import { UIProvider } from './ui/UIContext';
 import { ClienteProvider } from './cliente/ClienteContext';
+import { UsuarioProvider } from './usuario/UsuarioContext';
 import { AlertProvider } from './alert/AlertContext';
 
 export function AppProviders({ children }) {
@@ -12,7 +13,9 @@ export function AppProviders({ children }) {
         <AuthProvider>
           <UIProvider>
             <ClienteProvider>
-              {children}
+              <UsuarioProvider>
+                {children}
+              </UsuarioProvider>
             </ClienteProvider>
           </UIProvider>
         </AuthProvider>

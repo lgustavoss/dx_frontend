@@ -71,6 +71,15 @@ api.interceptors.response.use(
   async error => {
     const originalRequest = error.config;
     
+    // ADICIONADO: Verificar se é uma requisição para detalhes do usuário
+    if (error.response && error.response.status === 401 && 
+        originalRequest.url && originalRequest.url.includes('/usuario/users/')) {
+      console.log('Erro ao acessar detalhes do usuário, redirecionando para login');
+      // Redirecionar para login preservando a URL de retorno
+      localStorage.setItem('redirectTo', window.location.pathname);
+      return Promise.reject(error);
+    }
+    
     // ADICIONADO: Verificar se é uma requisição de login que falhou
     // Não tente atualizar o token se for uma tentativa de login falha
     if (error.response && error.response.status === 401 && 

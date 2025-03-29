@@ -1,116 +1,88 @@
-import { useEffect, useState, useContext } from 'react';
-import { FaEdit, FaPlus } from 'react-icons/fa';
+import React, { useEffect } from 'react';
+import { FaPlus, FaEye } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { api, addActivityListeners } from "../../../../axiosConfig";
 import { useUI } from '../../../../contexts/ui/UIContext';
+import { useUsuario } from '../../../../contexts/usuario/UsuarioContext';
 import { Container, Box, Stack } from '../../../ui/Layout';
-import Card from '../../../ui/Card/Card';
 import { ButtonPrimary } from '../../../ui/Button';
-import { Alert } from '../../../ui/Feedback';
 import './ListarUsuario.css';
 
 const ListarUsuario = () => {
-    const [usuarios, setUsuarios] = useState([]);
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
+    const { usuarios, loading, fetchUsuarios } = useUsuario();
     const { isSidebarOpen } = useUI();
+    const navigate = useNavigate();
 
+    // Carregar usuários na montagem do componente
     useEffect(() => {
-        const fetchUsuarios = async () => {
-            const token = localStorage.getItem('token');
-            try {
-                const response = await api.get('/usuario/users/', {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-                console.log('Response data:', response.data);
-                
-                // Use a propriedade results que contém o array de usuários
-                setUsuarios(response.data.results);
-                setLoading(false);
-                
-                addActivityListeners();
-            } catch (err) {
-                console.error('Error fetching users:', err.response ? err.response.data : err.message);
-                setError('Erro ao buscar usuários. Tente novamente mais tarde.');
-                setLoading(false);
-                setTimeout(() => {
-                    setError('');
-                }, 5000);
-            }
-        };
-
         fetchUsuarios();
-    }, []);
+    }, [fetchUsuarios]);
 
     const handleAddUser = () => {
         navigate('/cadastro');
     };
 
     return (
-        <Container maxWidth="large" className={`${isSidebarOpen ? 'sidebar-open' : ''} container--glass`}>
-            <Card variant="primary" padding="lg">
-                <h1>Usuários Cadastrados</h1>
-                
-                {loading ? (
-                    <Box padding="lg" textAlign="center">
-                        <p>Carregando usuários...</p>
-                    </Box>
-                ) : (
-                    <Stack spacing="xl" direction="column">
-                        <Box className="table-responsive">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nome</th>
-                                        <th>Username</th>
-                                        <th>Email</th>
-                                        <th>Tipo</th>
-                                        <th>Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {Array.isArray(usuarios) && usuarios.length > 0 ? usuarios.map(usuario => (
-                                        <tr key={usuario.id}>
-                                            <td>{usuario.id}</td>
-                                            <td>{usuario.first_name}</td>
-                                            <td>{usuario.username}</td>
-                                            <td>{usuario.email}</td>
-                                            <td>{usuario.is_staff ? "Administrador" : "Usuário Normal"}</td>
-                                            <td>
-                                                <button className="button edit-button" title="Editar">
-                                                    <FaEdit />
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    )) : (
-                                        <tr>
-                                            <td colSpan="6">Nenhum usuário encontrado</td>
-                                        </tr>
-                                    )}
-                                </tbody>
-                            </table>
-                        </Box>
-
-                        <Box className="add-button-container">
-                            <ButtonPrimary 
-                                className="add-button" 
-                                onClick={handleAddUser}
-                                leftIcon={<FaPlus />}
-                            >
-                                Novo Usuário
-                            </ButtonPrimary>
-                        </Box>
-                    </Stack>
-                )}
-            </Card>
+        <Container maxWidth="large" className="container--glass">
+            <h1>Usuários Cadastrados</h1>
             
-            {error && <Alert type="error" message={error} />}
+            {loading ? (
+                <Box padding="lg" textAlign="center">
+                    <p>Carregando usuários...</p>
+                </Box>
+            ) : (
+                <Stack spacing="xl" direction="column">
+                    <div className="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Ativo</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {Array.isArray(usuarios) && usuarios.length > 0 ? usuarios.map(usuario => (
+                                    <tr key={usuario.id}>
+                                        <td>{usuario.id}</td>
+                                        <td>{usuario.first_name}</td>
+                                        <td>{usuario.username}</td>
+                                        <td>{usuario.email}</td>
+                                        <td>{usuario.is_staff ? "Administrador" : "Usuário Normal"}</td>
+                                        <td className="actions-cell">
+                                            <button 
+                                                className="button view-button" 
+                                                title="Visualizar"
+                                                onClick={() => navigate(`/usuario/${usuario.id}`)}
+                                            >
+                                                <FaEye />
+                                            </button>
+                                        </td>
+                                    </tr>
+                                )) : (
+                                    <tr>
+                                        <td colSpan="6">Nenhum usuário encontrado</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <Box className="add-button-container">
+                        <ButtonPrimary 
+                            className="add-button" 
+                            onClick={handleAddUser}
+                            leftIcon={<FaPlus />}
+                        >
+                            Novo Usuário
+                        </ButtonPrimary>
+                    </Box>
+                </Stack>
+            )}
         </Container>
     );
-}
+};
 
 export default ListarUsuario;
